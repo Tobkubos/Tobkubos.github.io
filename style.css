@@ -1,0 +1,15 @@
+#Portfolio {
+    letter-spacing: 2rem;
+    font-weight: bold;
+    transition: letter-spacing 0.1s;
+}
+
+#AuthorName {
+    text-decoration: underline;
+    letter-spacing: -4px;
+    word-spacing: 5px;
+}
+
+#Portfolio:hover {
+    letter-spacing: 4rem;
+}
