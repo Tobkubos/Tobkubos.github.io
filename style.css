@@ -5,11 +5,22 @@
 }
 
 #AuthorName {
-    text-decoration: underline;
     letter-spacing: -4px;
     word-spacing: 5px;
 }
 
 #Portfolio:hover {
     letter-spacing: 4rem;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+footer {
+    margin-top: auto;
 }
