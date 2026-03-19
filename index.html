@@ -1,359 +1,547 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Tobiasz Kubiak - Portfolio</title>
+    <title>Portfolio | Tobiasz Kubiak</title>
+
+    <!-- Ikony i Czcionka -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           KONFIGURACJA KOLORÓW I ZMIENNYCH
+           ========================================= */
+        :root {
+            --bg: #050506;
+            --surface: #0f0f11;
+            --text-main: #ffffff;
+            --text-dim: #999999;
+            --accent: #FF2A2A;
+            --border: rgba(255, 42, 42, 0.15);
+            --grid-color: rgba(255, 0, 0, 0.25);
+            --glow-color: rgba(255, 51, 0, 0.15);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --header-blur: 15px;
+            --container-width: 1300px;
+        }
+
+        [data-theme="light"] {
+            --bg: #f0f4f8;
+            --surface: #ffffff;
+            --text-main: #000000;
+            --text-dim: #444444;
+            --accent: #1A00CC;
+            --border: rgba(26, 0, 204, 0.2);
+            --grid-color: rgba(26, 0, 204, 0.2);
+            --glow-color: rgba(26, 0, 204, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.4;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- SYSTEM TŁA --- */
+        .background-system {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background-color: var(--bg);
+        }
+
+        .grid-layer {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: calc(100% + 200px);
+            height: calc(100% + 200px);
+            background-image: radial-gradient(var(--grid-color) 1.5px, transparent 0);
+            background-size: 50px 50px;
+            animation: gridFlow 40s linear infinite;
+        }
+
+        @keyframes gridFlow {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+
+        .ambient-glow {
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+            animation: glowPulse 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            from {
+                transform: translate(-10%, -10%) scale(1);
+                opacity: 0.5;
+            }
+
+            to {
+                transform: translate(10%, 10%) scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* --- KONTENER I KOMPONENTY --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        header {
+            padding: 15px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border);
+            backdrop-filter: blur(var(--header-blur));
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            background: var(--accent);
+            border: none;
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 10px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        #about {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .about-text {
+            padding: 80px 40px 80px 0;
+            border-right: 1px solid var(--border);
+        }
+
+        .about-text h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.25;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            word-wrap: break-word;
+        }
+
+        .highlight {
+            background: var(--accent);
+            color: #000;
+            padding: 4px 12px;
+            display: inline;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+
+        .about-img-container {
+            background: var(--surface);
+            display: flex;
+            border-left: 1px solid var(--border);
+        }
+
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-header {
+            padding: 20px 20px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(256, 42, 42, 0.05);
+            gap: 15px;
+        }
+
+        #project-count {
+            color: #000;
+            background: var(--accent);
+            padding: 4px 12px;
+            font-weight: 700;
+            white-space: nowrap;
+            font-size: 12px;
+        }
+
+        #projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-left: 1px solid var(--border);
+            padding-bottom: 100px;
+        }
+
+        .project-card {
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 40px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            background: rgba(256, 42, 42, 0.05);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+        }
+
+        /* --- VIDEO CONTAINER --- */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            /* Zmieniamy tło na przezroczyste, aby ewentualna luka nie była czarna */
+            background: transparent;
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+            /* Ukrywamy wszystko, co mogłoby wystawać poza ramkę */
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Ustawiamy wysokość na 100.5%, aby wymusić idealne przyleganie na dole */
+            height: 100.5%;
+            border: none;
+            /* KLUCZOWE: display block usuwa lukę tekstową (baseline) */
+            display: block;
+            /* Dla plików mp4: wypełnij całe okno 16:9 bez czarnych pasów */
+            object-fit: cover;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--accent);
+            color: #000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+            font-weight: 900;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .social-links a {
+            color: #000;
+            font-size: 22px;
+            text-decoration: none;
+        }
+
+        .contact-trigger {
+            background: #000;
+            color: var(--accent);
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 11px;
+        }
+
+        /* --- DETALE --- */
+        #project-detail {
+            display: none;
+            padding: 60px 0 150px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .back-btn {
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 12px 24px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .tech-pill {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            padding: 4px 12px;
+            font-size: 10px;
+            margin: 0 8px 8px 0;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1100px) {
+            #projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            #about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text {
+                border-right: none;
+                padding: 40px 0;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            #projects-grid {
+                grid-template-columns: 1fr;
+                border-left: none;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            footer {
+                padding: 0 15px;
+            }
+
+            #footer-info {
+                display: none;
+            }
+        }
+    </style>
 </head>
-<body class="d-flex flex-column">
 
-<div class="container">
-    <div class="h1 mt-5" id="AuthorName">TOBIASZ KUBIAK</div>
-</div>
+<body>
 
-<div class="container">
-<div class="container h4 pt-4 px-0" id="Portfolio">PORTFOLIO</div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <div class="navbar-collapse d-flex justify-content-center" id="navbarNav">
-                <ul class="navbar-nav d-flex flex-row">
-                    <!--
-                    <li class="nav-item mx-1">
-                        <a class="nav-link" href="#aboutme">About me</a>
-                    </li>
-                    -->
-                    <li class="nav-item mx-1">
-                        <a class="nav-link" href="#unity">Unity Games</a>
-                    </li>
-                    <li class="nav-item mx-1">
-                        <a class="nav-link" href="#java">JAVA</a>
-                    </li>
-                    <li class="nav-item mx-1">
-                        <a class="nav-link" href="#threejs">ThreeJS</a>
-                    </li>
-                    <li class="nav-item mx-1">
-                        <a class="nav-link" href="#android">Android</a>
-                    </li>
-                    <li class="nav-item mx-1">
-                        <a class="nav-link" href="#figma">Figma</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-
-
-
-
-
-<div class="container flex-grow-1 mb-5">   
-    <!--
-    <div class="row h-100">
-        <div class="h2 d-none d-lg-block" id="aboutme">About me</div>
-
-        <div class="col-12 col-md-12 col-lg-4 order-1 order-md-1 order-lg-2 d-flex d-lg-block">
-            <div class="p-2 text-light w-100 d-flex justify-content-center align-items-start" style="height: 100%;">
-                <img src="img/avatar.png" style="object-fit: cover; max-height: 100%; max-width: 100%;" class="rounded-circle" alt="">
-            </div>
-        </div>
-
-        <div class="col order-2 order-md-1 mx-auto d-flex flex-column">
-            <div class="bg-secondary text-light fs-5 p-4 flex-grow-1">
-
-                Polish IT student with a passion for programming, from making simple scripts to developing complex algorithms and games. 
-                Naturally curious and inquisitive, always striving to find the most effective solution to any challenge. 
-                Believes that there’s always room for improvement and is eager to make it happen. 
-                Deeply interested in procedural algorithms, AI, and 3D modeling, including 3D printing.
-            </div>
-
-            <div class="h3 bg-secondary mt-3 px-4 py-1 text-light">
-                Skills:
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col h5 text-center">
-                        <img src="img/c++.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                        <div>C++</div>
-                    </div>
-
-                    <div class="col h5 text-center">
-                        <img src="img/Qt.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                        <div>Qt</div>
-                    </div>
-
-                    <div class="col h5 text-center">
-                        <img src="img/c-sharp.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                        <div>C#</div>
-                    </div>
-                    
-                    <div class="w-100"></div>
-
-                    <div class="col h5 text-center">
-                        <img src="img/java.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                        <div>JAVA</div>
-                    </div>
-
-                    <div class="col h5 text-center">
-                        <img src="img/python.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                        <div>Python</div>
-                    </div>
-
-                    <div class="col h5 text-center">
-                        <img src="img/html.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                        <div>HTML</div>
-                    </div>
-                    
-                    <div class="w-100"></div>
-                    
-                    <div class="col h5 text-center">
-                        <img src="img/css.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                        <div>CSS</div>
-                    </div>
-                </div>
-
-                <div class="h3 bg-secondary mt-3 px-4 py-1 text-light">
-                    Programs:
-                </div>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col h5 text-center">
-                            <img src="img/vsc.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                            <div>Visual Studio Code</div>
-                        </div>
-                        <div class="col h5 text-center">
-                            <img src="img/vs.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                            <div>Visual Studio</div>
-                        </div>
-                        <div class="col h5 text-center">
-                            <img src="img/androidStudio.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                            <div>Android Studio</div>
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col h5 text-center">
-                            <img src="img/intelliJ.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                            <div>IntelliJ IDEA</div>
-                        </div>
-                        <div class="col h5 text-center">
-                            <img src="img/autocad.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                            <div>AutoCAD apps</div>
-                        </div>
-                        <div class="col h5 text-center">
-                            <img src="img/unity.png" class="m-1" style="height: 30px; width: 30px;" alt="">
-                            <div>Unity</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="h3 bg-secondary mt-3 px-4 py-1 text-light">
-                    Awards:
-                </div>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col h5">
-                            <img src="img/trophy.png" class="m-1" style="height: 30px; width: 30px;" alt="">Game Jam MeetIT 1st place
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col h5">
-                            <img src="img/trophy.png" class="m-1" style="height: 30px; width: 30px;" alt="">Game Jam WFIIS 2nd place
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
-    <div class="row h-100">
-        <div class="col order-2 order-md-1 mx-auto d-flex flex-column"> 
-            <div class="container">
-                <div class="h3 bg-secondary mt-3 px-4 py-1 text-light">
-                    Awards:
-                </div>
-                <div class="row">
-                    <div class="col h5">
-                        <img src="img/trophy.png" class="m-1" style="height: 30px; width: 30px;" alt="">Game Jam MeetIT 1st place
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col h5">
-                        <img src="img/trophy.png" class="m-1" style="height: 30px; width: 30px;" alt="">Game Jam WFIIS 2nd place
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="background-system">
+        <div class="grid-layer"></div>
+        <div class="ambient-glow"></div>
     </div>
 
-    <div class="container h2 mt-5 mx-auto" id="unity">Unity Engine</div>
     <div class="container">
-        <div class="row">
+        <header>
+            <div class="logo">TOBIASZ KUBIAK | PORTFOLIO</div>
+            <button class="theme-toggle" onclick="toggleTheme()">SWITCH COLORS</button>
+        </header>
 
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/SmokeSail.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Smoke & Sail</h5>
-                        <p class="card-text" id="c1">Arcade game for MeetIT game jam made in 24h.</p>
-                        <a href="SmokeSail/SmokeSail.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
+        <div id="home-view">
+            <section id="about">
+                <div class="about-text">
+                    <p style="color: var(--accent); font-weight: 700; margin-bottom: 15px; font-size: 12px;">//
+                        USER_DESCRIPTION</p>
+                    <h1 id="about-name">Ładowanie...</h1>
+                    <p id="about-desc" style="max-width: 550px; color: var(--text-dim); font-size: 1.1rem;"></p>
                 </div>
-            </div>
-          
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/CracowDragon.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                      <h5 class="card-title">Cracow Dragon Mobile</h5>
-                      <p class="card-text" id="c1">Turn based card game for mobile devices.</p>
-                      <a href="CracowMobile/CracowMobile.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
-                  </div>
-            </div> 
-            
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/Brozard.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                      <h5 class="card-title">Brozard</h5>
-                      <p class="card-text" id="c1">Roguelike fast paced game when all you need to do is to survive as long as you can!</p>
-                      <a href="Brozard/Brozard.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
-                  </div>
-            </div> 
-            
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/Shapeshifter.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                      <h5 class="card-title">Shapeshifter</h5>
-                      <p class="card-text" id="c1">Tower Defence with proceduraly generating map!</p>
-                      <a href="Shapeshifter/ShapeShifter.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
-                  </div>
-            </div> 
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/eq.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                      <h5 class="card-title">Equipment</h5>
-                      <p class="card-text" id="c1">Fully functional, responsive and easy to modify equipment system with recipes to craft items!</p>
-                      <a href="Equipment/Equipment.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
-                  </div>
-            </div>
-            
-        </div>
-    </div>
-
-    <div class="container h2 mt-5 mx-auto" id="java">JAVA</div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/Paint.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Paint</h5>
-                        <p class="card-text" id="c1">Usage of JAVA Swing Library to create a fully functional Paint-like program</p>
-                        <a href="Paint/Paint.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
+                <div class="about-img-container">
+                    <img id="about-photo" src="" alt="Me" class="about-img">
                 </div>
+            </section>
+
+            <div class="section-header">
+                <h2>// SHOWCASE_PROJECTS</h2>
+                <div id="project-count">COUNT: --</div>
             </div>
+            <section id="projects-grid"></section>
+        </div>
+
+        <div id="project-detail">
+            <button class="back-btn" onclick="showHome()">← RETURN</button>
+            <div id="detail-content"></div>
         </div>
     </div>
 
-    <div class="container h2 mt-5 mx-auto" id="threejs">ThreeJS</div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/TownGenerator.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Town Generator</h5>
-                        <p class="card-text" id="c1">JavaScript project including ThreeJS library. Generate your beautiful city panorama!</p>
-                        <a href="CityGenerator/CityGenerator.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
-                </div>
+    <footer>
+        <div id="footer-info">TOBIASZ KUBIAK | 2026</div>
+        <div class="social-links" id="socials"></div>
+        <a href="#" id="mailto" class="contact-trigger">SEND_MESSAGE</a>
+    </footer>
+
+    <script>
+        let siteData = null;
+
+        async function init() {
+            try {
+                const response = await fetch('data.json');
+                siteData = await response.json();
+                renderAbout();
+                renderProjects();
+                renderFooter();
+            } catch (e) { console.error("Data.json missing."); }
+        }
+
+        function renderAbout() {
+            document.getElementById('about-name').innerHTML = `<span class="highlight">${siteData.about.name}</span>`;
+            document.getElementById('about-desc').innerText = siteData.about.description;
+            document.getElementById('about-photo').src = siteData.about.photo;
+        }
+
+        function renderProjects() {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = '';
+            document.getElementById('project-count').innerText = `COUNT: 0${siteData.projects.length}`;
+            siteData.projects.forEach((p, i) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <span style="color: var(--accent); font-weight: 700; font-size: 12px; margin-bottom: 10px; display: block;">ID_0${i + 1}</span>
+                    <img src="${p.thumbnail}" alt="${p.title}">
+                    <h3>${p.title}</h3>
+                    <p style="color: var(--text-dim); margin-top: 10px; font-size: 0.9rem;">${p.description}</p>
+                `;
+                card.onclick = () => showProject(p.id);
+                grid.appendChild(card);
+            });
+        }
+
+        function showProject(id) {
+            const p = siteData.projects.find(proj => proj.id === id);
+            const detail = document.getElementById('project-detail');
+            const home = document.getElementById('home-view');
+
+            // Logika wideo z automatyczną poprawką linków YouTube
+            let videoHTML = "";
+            if (p.video_url) {
+                let url = p.video_url;
+
+                // Jeśli to standardowy link YouTube, zamień go na embed (naprawia błąd blokowania)
+                if (url.includes('youtube.com/watch?v=')) {
+                    url = url.replace('youtube.com/watch?v=', 'youtube.com/embed/');
+                } else if (url.includes('youtu.be/')) {
+                    url = url.replace('youtu.be/', 'www.youtube.com/embed/');
+                }
+
+                // Sprawdzamy czy to platforma streamingowa czy plik bezpośredni
+                if (url.includes('youtube.com') || url.includes('vimeo.com')) {
+                    videoHTML = `<div class="video-wrapper"><iframe src="${url}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+                } else {
+                    videoHTML = `<div class="video-wrapper"><video controls src="${url}"></video></div>`;
+                }
+            }
+
+            document.getElementById('detail-content').innerHTML = `
+        <div class="detail-grid">
+            <div>
+                <h1 style="font-size: clamp(2.5rem, 8vw, 4.5rem); text-transform: uppercase; line-height: 1; margin-bottom: 40px;">${p.title}</h1>
+                <div style="margin-bottom: 40px;">${p.stack.map(s => `<span class="tech-pill">${s}</span>`).join('')}</div>
+                
+                <!-- KLUCZOWA ZMIANA: white-space: pre-line naprawia wyświetlanie \n -->
+                <p style="font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px; white-space: pre-line;">${p.longDescription}</p>
+                
+                <p style="font-weight: 700;">DATE: ${p.date}</p>
+            </div>
+            <div>
+                ${videoHTML}
+                ${p.images.map(img => `<img src="${img}" style="width:100%; border: 1px solid var(--border); margin-bottom: 30px;">`).join('')}
             </div>
         </div>
-    </div>
+    `;
+            home.style.display = 'none';
+            detail.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
 
-    <div class="container h2 mt-5 mx-auto" id="android">Android</div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/android.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">OLX App</h5>
-                        <p class="card-text" id="c1">App Template designed in Android Studio for mobile, tablet and PC!</p>
-                        <a href="OLXapp/OLXapp.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        function showHome() {
+            document.getElementById('home-view').style.display = 'block';
+            document.getElementById('project-detail').style.display = 'none';
+        }
 
-    <div class="container h2 mt-5 mx-auto" id="figma">Figma</div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 h5">
-                <div class="card" style="width: 100%; height:100%; border:none;">
-                    <img class="card-img-top" src="img/januszex.png" alt="Card image cap" style="height: 230px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Pizza App</h5>
-                        <p class="card-text" id="c1">Created from everything what figma gives!</p>
-                        <a href="Figma/januszex.html" class="btn btn-secondary mt-auto">See more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        function renderFooter() {
+            const soc = siteData.contact.socials;
+            document.getElementById('socials').innerHTML = `
+                <a href="${soc.linkedin}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="${soc.facebook}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="${soc.itch}" target="_blank"><i class="fab fa-itch-io"></i></a>
+            `;
+            document.getElementById('mailto').href = `mailto:${siteData.contact.email}`;
+        }
 
-<footer class="bg-light text-dark">
-    <div class="container py-1">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
-            <div class="col mb-3">
-                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                </a>
-                <p class="text-body-secondary text-center">TOBIASZ KUBIAK</p>
-                <p class="text-body-secondary text-center">2024</p>
-            </div>
-            <div class="col mb-3"></div>
+        function toggleTheme() {
+            const body = document.body;
+            if (body.getAttribute('data-theme') === 'light') body.removeAttribute('data-theme');
+            else body.setAttribute('data-theme', 'light');
+        }
 
-            <div class="col mb-3">
-                <h5>Links</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="https://github.com/Tobkubos" class="nav-link p-0 text-body-secondary">Github</a></li>
-                    <li class="nav-item mb-2"><a href="https://tobkubos.itch.io" class="nav-link p-0 text-body-secondary">Itch.io</a></li>
-                    <li class="nav-item mb-2"><a href="https://www.linkedin.com/in/tobiasz-kubiak-6905ba331/" class="nav-link p-0 text-body-secondary">LinkedIn</a></li>
-                </ul>
-            </div>
-
-
-            <div class="col mb-3">
-                <h5>Contact</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">email: Tobkub7@gmail.com</a></li>
-                    <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary">phone: +48 728155875</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        init();
+    </script>
 </body>
+
 </html>

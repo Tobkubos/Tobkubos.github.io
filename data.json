@@ -1,0 +1,249 @@
+{
+    "about": {
+        "name": "Tobiasz Kubiak",
+        "description": "Early-career engineer with a passion for turning unconventional ideas into real solutions. I enjoy exploring creative concepts, especially those that challenge standard thinking. Outside of engineering, I’m deeply interested in sports and all kinds of games, which fuel my strategic mindset and problem-solving approach.",
+        "photo": "Images/USER/prof.jpg"
+    },
+    "projects": [
+        {
+            "id": 1,
+            "title": "TEAM Tournament Mobile App",
+            "description": "Application for organizing amateur tennis competitions.",
+            "longDescription": "TEAM TOURNAMENT is a comprehensive mobile application designed to automate and support the organization of amateur tennis competitions.\n\nDeveloped based on the practical experience of the organizers of the TEAM Amateur Tennis League in Włocławek, the app is tailored to the real-world needs of tournament management and participant engagement.\n\nKey Functionalities:\n- Automated Management: Creation of competition groups and league schedules.\n- Dynamic Brackets: Automatic generation of tournament structures and match tracking.\n- Statistics System: Real-time presentation of player performance based on recorded results.\n\nUser Roles & Access:\n- Organizer Account: Full control over competition management and tournament settings.\n- Player Account: Personal dashboard to participate in events and monitor performance.\n\nTechnical Stack:\n- Development: Android Studio (Native Android Development).\n- Backend & Services: Firebase (Data storage, Authentication, Push Notifications).\n- Design: UI/UX prototype developed in Figma, following modern accessibility standards.\n\nThe final solution provides a practical tool that significantly enhances management efficiency while improving information transparency and accessibility for all participants.",
+            "thumbnail": "Images/TeamTournament/5.png",
+            "images": [
+                "Images/TeamTournament/1.png",
+                "Images/TeamTournament/2.png",
+                "Images/TeamTournament/3.png",
+                "Images/TeamTournament/4.png",
+                "Images/TeamTournament/5.png"
+            ],
+            "date": "2025-2026",
+            "stack": [
+                "Kotlin",
+                "Android Studio",
+                "Firebase",
+                "Figma",
+                "OOP"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Push The Cart Together",
+            "description": "Cooperative multiplayer game released on Steam.",
+            "longDescription": "Push the Cart TOGETHER is a fast-paced and precise cooperative game for two players.\n\nPush a large cart filled with goods and synchronize your decisions to navigate narrow paths and dangerous obstacles. Coordination and teamwork are key — one mistake is enough to set everything on fire.\n\nCore Mechanics:\n- Synchronized movement: Each player controls one side of the cart.\n- Precision physics: Pushing or pulling requires perfect timing.\n- High stakes: The goal is to reach the finish line at all costs.\n\nGame Modes:\n- Duo Co-op: Test your communication and patience with a friend.\n- Solo Mode: Master the physics by controlling the cart alone.\n\nYou’ll quickly realize that the real challenge isn’t the obstacles, but… simply moving in a straight line and communicating effectively.",
+            "thumbnail": "Images/PTCT/PTCT_LOGO.png",
+            "images": [
+                "Images/PTCT/1.png",
+                "Images/PTCT/2.png",
+                "Images/PTCT/3.png",
+                "Images/PTCT/4.png"
+            ],
+            "video_url": "https://www.youtube.com/embed/04tBw_DdeeA",
+            "date": "2025-2026",
+            "stack": [
+                "Unity",
+                "Input System",
+                "Network Programming",
+                "C#",
+                "OOP",
+                "Git",
+                "Agile"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "JAVA Paint",
+            "description": "Usage of JAVA Swing Library to create a fully functional Paint-like program.",
+            "longDescription": "Paint program made in Java using the Swing library.\n\nFeatures:\n- File save and open functionality\n- Undo and redo\n- Resizing\n- Text input\n- Spray and pen tools\n- Fill, gradient, custom size, rotate\n- 6 different shapes\n- 12 slots for your favorite colors\n- Many painting combinations",
+            "thumbnail": "Images/JAVA_PAINT/1.png",
+            "images": [
+                "Images/JAVA_PAINT/1.png"
+            ],
+            "date": "2024",
+            "stack": [
+                "JAVA",
+                "Swing",
+                "File I/O"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "JS Town Generator",
+            "description": "JavaScript project including ThreeJS library. Generate your beautiful city panorama!",
+            "longDescription": "Town Generator is an interactive web application designed to procedurally create unique, low-poly urban environments in real-time.\n\nBuilt with JavaScript and the Three.js library, the project explores the intersection of procedural logic and 3D rendering. With a single click, the algorithm generates a completely new city layout, ensuring that no two towns are ever the same.\n\nKey Features:\n- Procedural Generation: Every town is created from scratch with randomized building heights, placements, and color schemes.\n- Grid Scaling: Users can choose the size of the town, from a small neighborhood to a massive metropolis.\n- Dynamic Environments: Includes diverse lighting setups, such as daytime and an atmospheric night mode with glowing street lamps.\n- Performance: Optimized 3D rendering using Three.js for a smooth experience directly in the browser.\n\nTechnical Stack:\n- Framework: Three.js (WebGL-based 3D engine).\n- Language: Native JavaScript (ES6+).\n- Logic: Custom procedural algorithms for grid-based object placement.\n\nThis project demonstrates the power of browser-based 3D graphics and provides a solid foundation for procedural world-building in web games and simulations.",
+            "thumbnail": "Images/TOWNGENERATOR/3.png",
+            "images": [
+                "Images/TOWNGENERATOR/1.png",
+                "Images/TOWNGENERATOR/2.png",
+                "Images/TOWNGENERATOR/3.png",
+                "Images/TOWNGENERATOR/4.png"
+            ],
+            "date": "2023-2024",
+            "stack": [
+                "JavaScript",
+                "Three.js",
+                "Procedural Generation",
+                "WebGL",
+                "HTML/CSS"
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Panoramix Cauldron",
+            "description": "Game created for local edition of 2026 Global Game Jam in Łódź ('UniŁódzki Jam'). Third place in the competition.",
+            "longDescription": "Developed in just 48 hours for Global Game Jam 2026, this project is a narrative-driven management sim exploring the theme of 'Masks'.\n\nStep into a cryptic universe where a mask is a mandatory ticket to society—unless you are willing to face the consequences of being an outcast. As the keeper of a mystical alchemy shop, you stand behind a bubbling cauldron, serving a stream of enigmatic customers. But in a world where everyone hides their face, how do you know who to trust?\n\nKey Gameplay Mechanics:\n- Alchemical Brewing: Mix rare ingredients and weird items to fulfill specific, often mysterious, requests.\n- Social Deduction: Analyze each customer's hidden motives. Look beyond the mask (or the lack of one) to decide if their intentions are pure.\n- Consequence-Driven Choices: Every decision matters. Choosing to serve or refuse a customer can change the course of their story and yours.\n- The Unmasked Twist: In this society, those without masks are the true anomalies. Deciding whether to aid them is the ultimate test of your intuition.\n\nTechnical Highlights:\n- Rapid Prototyping: Designed, balanced, and polished within the strict 48-hour Game Jam timeframe.\n- Immersive Narrative: Focused on atmospheric storytelling and moral ambiguity.\n- Browser-Based Experience: Optimized for seamless play directly in the web browser.\n\nCan you see through the disguises and make the right call? The cauldron is bubbling, and the next customer is already at the door.",
+            "thumbnail": "Images/PANORAMIX/Panoramix_LOGO.png",
+            "images": [
+                "Images/PANORAMIX/1.png",
+                "Images/PANORAMIX/2.png"
+            ],
+            "date": "2026",
+            "stack": [
+                "Unity",
+                "C#",
+                "Narrative Design",
+                "Rapid Prototyping",
+                "Game Jam",
+                "Git"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Smoke & Sail",
+            "description": "Winner of MEET IT GameJam 2024. Game created in 24 hours by a team of 5 people.",
+            "longDescription": "Awarded 1st Place at the MeetIT 24h Game Jam 2024 (Łódź, Biblioteka MEMO), Smoke&Sail is a high-octane tribute to retro-arcade shooters and psychedelic aesthetics.\n\nDeveloped in a 24-hour sprint by a collaborative team of five, the project was tasked with merging two contrasting themes: 'Pirates' and 'Chill'. The result is a neon-soaked, maritime fever dream inspired by the urban legend of Polybius. It’s a 'chilled' voyage turned into a psychedelic battle for survival on the high seas.\n\nKey Features:\n- 1st Place Winner: Evaluated and ranked #1 among competing projects for its unique style and polished gameplay loop.\n- Psychedelic Retro Style: A unique visual direction where low-fi pixel art meets mind-bending, hallucinogenic effects.\n- Strategic Arcade Combat: Utilize two distinct bullet types to effectively neutralize a variety of enemy classes.\n- Dynamic Power-Ups: Adapt to the chaos by collecting temporary boosts that shift the tide of battle.\n- The Kraken: Face the ultimate maritime nightmare in an endless, increasingly difficult struggle for survival.\n\nTechnical & Soft Skills:\n- Rapid Prototyping: Designed, implemented, and balanced in just 24 hours.\n- Team Collaboration: Seamlessly developed within a 5-person team, coordinating art, logic, and sound design under strict time constraints.\n\nSmoke&Sail is an intense, stylized arcade experience where the goal is simple but the challenge is legendary: Survive as long as you can. Beware the Kraken!",
+            "thumbnail": "Images/SMOKESAIL/SmokeSail_LOGO.png",
+            "images": [
+                "Images/SMOKESAIL/1.png",
+                "Images/SMOKESAIL/2.png",
+                "Images/SMOKESAIL/3.png",
+                "Images/SMOKESAIL/4.png",
+                "Images/SMOKESAIL/5.png"
+            ],
+            "date": "2024",
+            "stack": [
+                "Unity",
+                "C#",
+                "Rapid Prototyping",
+                "Team Collaboration",
+                "Game Jam",
+                "Git"
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Shapeshifter TD",
+            "description": "Tower Defense game with randomly generated levels. Solo project.",
+            "longDescription": "Shapeshifter is a minimalist Tower Defense experience that redefines tactical planning through procedural world-building.\n\nUnlike traditional TD games with static stages, Shapeshifter challenges the player with a dynamic environment that is never the same twice. Every session utilizes a custom algorithm to generate a unique landscape, complete with randomized path placements, bonus tiles, and strategic obstacles. This ensures that the player must adapt their strategy to the terrain in every single run.\n\nKey Gameplay Pillars:\n- Procedural Map Logic: Every playthrough features a different path, bonus tile distribution, and rock placement, offering infinite replayability.\n- Deep Arsenal: Choose from 10 distinct building types, ranging from offensive turrets to strategic support structures that buff your defenses.\n- Progressive Evolution: A comprehensive upgrade system where towers gain XP by dealing damage, allowing them to evolve through multiple power tiers.\n- Challenging Wave System: Defend against 5 unique enemy classes, each requiring a different tactical approach to neutralize effectively.\n\nTechnical Insights:\n- Algorithmic Pathfinding: Implementation of a robust procedural grid-system that ensures valid and challenging paths for every new game.\n- Balanced Scaling: Real-time management of tower XP, wave difficulty, and economy (Cash system).\n- Clean UI/UX: A high-FPS, minimalist interface designed for maximum readability and distraction-free strategy.\n\nIn Shapeshifter, your greatest weapon is your ability to adapt. Can you build the ultimate defense on a battlefield that refuses to stay the same?",
+            "thumbnail": "Images/TD3D/2.png",
+            "images": [
+                "Images/TD3D/1.png",
+                "Images/TD3D/2.png",
+                "Images/TD3D/3.png"
+            ],
+            "date": "2024",
+            "stack": [
+                "Unity",
+                "C#",
+                "Procedural Generation",
+                "Tower Defense Mechanics",
+                "Game Design"
+            ]
+        },
+        {
+            "id": 8,
+            "title": "BROzard",
+            "description": "Rogue-Like wizard arena survival game.",
+            "longDescription": "BROzard is an intense roguelike arena survival where arcane mastery meets relentless slime hordes. Step into the robes of a powerful wizard and test your skills in a battle for survival against ever-evolving gelatinous threats.\n\nIn BROzard, every wave is a test of reflexes and strategy. Between the chaos of battle, you must make critical decisions on how to grow your power, balancing immediate survival with long-term scaling through a deep upgrade and artifact system.\n\nKey Gameplay Features:\n- Tactical Skill Progression: Allocate attribute points after every wave to fine-tune your wizard's combat efficiency and magical prowess.\n- Legendary Artifacts: Discover and equip powerful relics awarded at key intervals, capable of shifting the tide of battle with unique passive effects.\n- Dynamic Environmental Hazards: Experience the tension of the Thunderstorm system—random weather events that drastically reduce visibility, forcing you to rely on intuition and quick reactions.\n- Diverse Bestiary: Face off against 5 distinct slime classes, including rare and dangerous mutated variants that require specialized tactics to defeat.\n\nTechnical Highlights:\n- Procedural Difficulty Scaling: Implementation of a wave-based system that increases in complexity and enemy density.\n- Dynamic Visibility Logic: A custom environmental overlay system that manages line-of-sight and lighting during weather events.\n- Synergistic Upgrade Architecture: A robust framework allowing for multiple combinations of skills and artifacts for high replayability.\n\nThe shadows are growing, the storm is coming, and the slimes are hungry. Are you 'BRO' enough to master the elements and survive the hoard?",
+            "thumbnail": "Images/Brozard/Brozard_LOGO.png",
+            "images": [
+                "Images/Brozard/1.png",
+                "Images/Brozard/2.png",
+                "Images/Brozard/3.png",
+                "Images/Brozard/4.png"
+            ],
+            "date": "2023",
+            "stack": [
+                "Unity",
+                "C#",
+                "Procedural Generation",
+                "Tower Defense Mechanics",
+                "Game Design"
+            ]
+        },
+        {
+            "id": 9,
+            "title": "SWIPE!",
+            "description": "Reflex game with a swipe mechanic. PWA project.",
+            "longDescription": "Swipe! is a high-speed, minimalist 2D endless runner that merges the lane-switching intensity of 'Subway Surfers' with the clean, rhythmic aesthetics of 'Color Switch'.\n\nDesigned for mobile-first engagement, the project focuses on fluid UI/UX and unique physical interactions. The player navigates a 3-lane system, dodging procedurally generated obstacles that descend at an ever-increasing velocity. Survival depends on split-second decision-making and precise swipe gestures.\n\nKey Innovations & Gameplay:\n- Physical Interaction: Features a unique reward system where players use the phone’s accelerometer to 'shake' open loot boxes, adding a fun, tactile dimension to the post-game experience.\n- Cloud Integration: Fully synchronized with Google Firebase to manage global leaderboards, persistent player high scores, and an unlockable inventory of skins and effects.\n- Procedural Fairness: Implements a smart obstacle generation algorithm that ensures every wave has a viable escape route, balancing high difficulty with fair gameplay logic.\n- Customization Engine: A dedicated 'Skins & Effects' system allowing players to personalize their experience with rewards earned through performance.\n\nTechnical Stack:\n- Platform: Mobile (Portrait Mode).\n- Backend: Firebase (Real-time Database & Authentication).\n- Hardware: Accelerometer-based motion detection for reward mechanics.\n- Design Philosophy: Minimalist vector-style graphics for maximum performance and intuitive readability.\n\nSwipe! isn't just a test of reflexes—it's an exploration of how hardware sensors and cloud persistence can elevate a classic arcade loop into a modern mobile experience.",
+            "thumbnail": "Images/SWIPE/1.png",
+            "images": [
+                "Images/SWIPE/1.png",
+                "Images/SWIPE/2.png",
+                "Images/SWIPE/3.png",
+                "Images/SWIPE/4.png",
+                "Images/SWIPE/5.png"
+            ],
+            "date": "2025",
+            "stack": [
+                "JavaScript",
+                "HTML/CSS",
+                "Firebase",
+                "PWA",
+                "Accelerometer Integration"
+            ]
+        },
+        {
+            "id": 10,
+            "title": "The Ophiuchus",
+            "description": "A game about the Ophiuchus, created during the Komiks Game Jam 2025.",
+            "longDescription": "The Ophiuchus is a dark, atmospheric action experience centered around the myth of the forgotten thirteenth zodiac sign.\n\nIn a celestial hierarchy governed by twelve, Ophiuchus stands as a pariah. Cast out and erased from the stars, the Serpent Bearer must wage a desperate war against the established Zodiacs to reclaim his place in the heavens. However, in this universe, destiny is not a choice—it is a cage. Even as you strike down your brothers, you realize that your tragic fate was written long before the first spark of rebellion.\n\nKey Narrative & Gameplay Features:\n- Celestial Pariah Lore: Deeply rooted in astrological mythology, exploring the conflict between Ophiuchus and the traditional twelve signs.\n- Mythological Boss-Rush: Engage in intense, high-stakes combat against powerful celestial entities representing the classic Zodiacs.",
+            "thumbnail": "Images/OPI/1.png",
+            "images": [
+                "Images/OPI/1.png",
+                "Images/OPI/2.png",
+                "Images/OPI/3.png",
+                "Images/OPI/4.png"
+            ],
+            "date": "2025",
+            "stack": [
+                "Unity",
+                "C#",
+                "Narrative Design",
+                "Boss-Rush Mechanics",
+                "Game Jam"
+            ]
+        },
+        {
+            "id": 11,
+            "title": "Pizzeria Januszex",
+            "description": "UI Design project for a custom pizza restaurant. Made in Figma.",
+            "longDescription": "Januszex Pizza is a comprehensive mobile UI/UX case study designed in Figma, focusing on streamlining the food ordering process through intuitive design and memorable branding.\n\nThe project explores how a simplified user interface can reduce cognitive load for first-time users while maintaining a fun, engaging aesthetic. By utilizing the 'Januszex' mascot, the app builds an immediate emotional connection with the user, making the mundane task of ordering pizza a more delightful experience.\n\nKey Design Features:\n- Intuitive Navigation: A clean, 4-tab bottom navigation system (Menu, Cart, Profile, Contact) that ensures essential features are always one tap away.\n- Visual Hierarchy: High-fidelity product cards with clear pricing, ingredient lists, and high-impact call-to-action buttons to drive conversions.\n- Seamless Prototyping: A fully interactive flow that simulates the entire user journey—from account registration to browsing the menu and completing the checkout process.\n- Personalization: Dedicated user profiles with order history, address management, and active order tracking.\n\nTechnical Figma Expertise:\n- Component-Based Design: Built using a robust library of reusable components and variants to ensure visual consistency across all 20+ screens.\n- Prototyping & Logic: Implementation of complex transitions and user flows to test the app’s logic and usability before development.\n- UI/UX Standards: Adherence to mobile design patterns, focusing on touch targets, readability, and a warm, appetizing color palette.\n\nJanuszex Pizza demonstrates that a professional-grade application can be both technologically advanced and remarkably easy to use, providing a friction-less experience for users of all tech-literacy levels.",
+            "thumbnail": "Images/PIZZA/1.png",
+            "images": [
+                "Images/PIZZA/1.png",
+                "Images/PIZZA/2.png",
+                "Images/PIZZA/3.png",
+                "Images/PIZZA/4.png",
+                "Images/PIZZA/5.png"
+            ],
+            "date": "2025",
+            "stack": [
+                "Unity",
+                "C#",
+                "Narrative Design",
+                "Boss-Rush Mechanics",
+                "Game Jam"
+            ]
+        }
+    ],
+    "contact": {
+        "email": "tobkub7@gmail.com",
+        "socials": {
+            "linkedin": "https://www.linkedin.com/in/tobiasz-kubiak-6905ba331/",
+            "facebook": "https://www.facebook.com/tobiasz.kubiak.54/",
+            "itch": "https://tobkubos.itch.io/"
+        }
+    }
+}
