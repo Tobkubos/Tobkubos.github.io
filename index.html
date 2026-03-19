@@ -26,18 +26,7 @@
             --glow-color: rgba(255, 51, 0, 0.15);
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --header-blur: 15px;
-            --container-width: 1300px;
-        }
-
-        [data-theme="light"] {
-            --bg: #f0f4f8;
-            --surface: #ffffff;
-            --text-main: #000000;
-            --text-dim: #444444;
-            --accent: #1A00CC;
-            --border: rgba(26, 0, 204, 0.2);
-            --grid-color: rgba(26, 0, 204, 0.2);
-            --glow-color: rgba(26, 0, 204, 0.1);
+            --container-width: 1400px;
         }
 
         * {
@@ -58,59 +47,40 @@
         /* --- SYSTEM TŁA --- */
         .background-system {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1; overflow: hidden;
             background-color: var(--bg);
         }
 
         .grid-layer {
             position: absolute;
-            top: -100px;
-            left: -100px;
+            top: -100px; left: -100px;
             width: calc(100% + 200px);
             height: calc(100% + 200px);
-            background-image: radial-gradient(var(--grid-color) 1.5px, transparent 0);
+            background-image: radial-gradient(var(--grid-color) 1px, transparent 0);
             background-size: 50px 50px;
-            animation: gridFlow 40s linear infinite;
+            animation: gridFlow 10s linear infinite;
         }
 
         @keyframes gridFlow {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            100% {
-                transform: translate(100px, 100px);
-            }
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
         }
 
         .ambient-glow {
             position: absolute;
-            top: 30%;
-            left: 30%;
-            width: 60vw;
-            height: 60vw;
+            top: 30%; left: 30%;
+            width: 60vw; height: 60vw;
             background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
             animation: glowPulse 15s ease-in-out infinite alternate;
         }
 
         @keyframes glowPulse {
-            from {
-                transform: translate(-10%, -10%) scale(1);
-                opacity: 0.5;
-            }
-
-            to {
-                transform: translate(10%, 10%) scale(1.2);
-                opacity: 1;
-            }
+            from { transform: translate(-10%, -10%) scale(1); opacity: 0.5; }
+            to { transform: translate(10%, 10%) scale(1.2); opacity: 1; }
         }
 
-        /* --- KONTENER I KOMPONENTY --- */
+        /* --- KONTENER --- */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
@@ -119,35 +89,18 @@
         }
 
         header {
-            padding: 15px 5px;
+            padding: 20px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid var(--border);
             backdrop-filter: blur(var(--header-blur));
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: sticky; top: 0; z-index: 100;
         }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 4px;
-            color: var(--accent);
-        }
+        .logo { font-weight: 700; font-size: 1.1rem; letter-spacing: 4px; color: var(--accent); }
 
-        .theme-toggle {
-            cursor: pointer;
-            background: var(--accent);
-            border: none;
-            padding: 10px 20px;
-            font-weight: 700;
-            font-size: 10px;
-            text-transform: uppercase;
-            transition: var(--transition);
-        }
-
+        /* --- SEKCJA ABOUT --- */
         #about {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -161,8 +114,8 @@
         }
 
         .about-text h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 1.25;
+            font-size: clamp(2.2rem, 6vw, 5rem);
+            line-height: 1.2;
             font-weight: 700;
             text-transform: uppercase;
             margin-bottom: 25px;
@@ -182,33 +135,42 @@
             background: var(--surface);
             display: flex;
             border-left: 1px solid var(--border);
+            overflow: hidden;
+            height: 100%;
         }
 
         .about-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            /* FIX: Centrowanie zdjęcia */
+            object-position: top center; 
         }
 
+        /* --- SEKCJA NAGŁÓWKA PROJEKTÓW --- */
         .section-header {
-            padding: 20px 20px;
+            padding: 30px 40px;
             border-bottom: 2px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: rgba(256, 42, 42, 0.05);
-            gap: 15px;
+            gap: 20px;
         }
+
+        .section-header h2 { font-size: clamp(1.2rem, 3vw, 1.6rem); text-transform: uppercase; }
 
         #project-count {
             color: #000;
             background: var(--accent);
-            padding: 4px 12px;
+            padding: 5px 15px;
             font-weight: 700;
             white-space: nowrap;
             font-size: 12px;
+            letter-spacing: 1px;
         }
 
+        /* --- GRID PROJEKTÓW --- */
         #projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -219,57 +181,60 @@
         .project-card {
             border-right: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            padding: 40px;
+            padding: 30px;
             cursor: pointer;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            background: transparent;
+            will-change: transform;
         }
 
         .project-card:hover {
-            background: rgba(256, 42, 42, 0.05);
+            background: rgba(255, 42, 42, 0.08);
+            border-color: var(--accent);
+            transform: scale(1.02);
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(255, 42, 42, 0.15);
         }
 
         .project-card img {
             width: 100%;
-            height: 280px;
+            height: 220px;
             object-fit: cover;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             border: 1px solid var(--border);
         }
 
-        /* --- VIDEO CONTAINER --- */
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            /* Zmieniamy tło na przezroczyste, aby ewentualna luka nie była czarna */
-            background: transparent;
-            margin-bottom: 40px;
-            border: 1px solid var(--border);
-            /* Ukrywamy wszystko, co mogłoby wystawać poza ramkę */
-            overflow: hidden;
+        .project-card h3 {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
         }
 
-        .video-wrapper iframe,
-        .video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            /* Ustawiamy wysokość na 100.5%, aby wymusić idealne przyleganie na dole */
-            height: 100.5%;
-            border: none;
-            /* KLUCZOWE: display block usuwa lukę tekstową (baseline) */
-            display: block;
-            /* Dla plików mp4: wypełnij całe okno 16:9 bez czarnych pasów */
-            object-fit: cover;
+        .project-card .card-date {
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stack-tag {
+            font-size: 10px;
+            padding: 2px 8px;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-right: 5px;
+            margin-top: 5px;
+            display: inline-block;
         }
 
         /* --- FOOTER --- */
         footer {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             background: var(--accent);
             color: #000;
             height: 60px;
@@ -281,111 +246,41 @@
             font-weight: 900;
         }
 
-        .social-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .social-links a {
-            color: #000;
-            font-size: 22px;
-            text-decoration: none;
-        }
-
-        .contact-trigger {
-            background: #000;
-            color: var(--accent);
-            padding: 10px 25px;
-            text-decoration: none;
-            font-size: 11px;
-        }
+        .social-links a { color: #000; font-size: 22px; margin-right: 20px; text-decoration: none; }
+        .contact-trigger { background: #000; color: var(--accent); padding: 10px 25px; text-decoration: none; font-size: 11px; }
 
         /* --- DETALE --- */
-        #project-detail {
-            display: none;
-            padding: 60px 0 150px 0;
-            animation: fadeIn 0.5s ease;
-        }
+        #project-detail { display: none; padding: 40px 0 120px 0; animation: fadeIn 0.5s ease; }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .back-btn { background: var(--surface); border: 1px solid var(--accent); color: var(--accent); padding: 12px 24px; cursor: pointer; margin-bottom: 40px; font-weight: 700; }
+        .tech-pill { display: inline-block; border: 1px solid var(--accent); padding: 4px 12px; font-size: 10px; margin: 0 8px 8px 0; font-weight: 700; color: var(--accent); }
 
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-        }
-
-        .back-btn {
-            background: var(--surface);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 12px 24px;
-            cursor: pointer;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        .tech-pill {
-            display: inline-block;
-            border: 1px solid var(--accent);
-            padding: 4px 12px;
-            font-size: 10px;
-            margin: 0 8px 8px 0;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 1100px) {
-            #projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .container { padding: 0 30px; }
+            #projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-header { padding: 30px; }
         }
 
         @media (max-width: 900px) {
-            #about {
-                grid-template-columns: 1fr;
-            }
-
-            .about-text {
-                border-right: none;
-                padding: 40px 0;
-            }
-
-            .detail-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
+            #about { grid-template-columns: 1fr; }
+            .about-text { border-right: none; padding: 60px 20px 40px 20px; border-bottom: 1px solid var(--border); }
+            .about-img-container { height: 500px; border-left: none; }
+            .detail-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
-        @media (max-width: 700px) {
-            #projects-grid {
-                grid-template-columns: 1fr;
-                border-left: none;
-            }
-
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            footer {
-                padding: 0 15px;
-            }
-
-            #footer-info {
-                display: none;
-            }
+        @media (max-width: 600px) {
+            .container { padding: 0 15px; }
+            header { padding: 15px 5px; }
+            .logo { font-size: 0.85rem; letter-spacing: 2px; }
+            .about-text { padding: 40px 10px; }
+            .section-header { flex-direction: column; align-items: flex-start; padding: 20px 15px; }
+            #projects-grid { grid-template-columns: 1fr; border-left: none; }
+            .project-card { border-right: none; padding: 25px 15px; }
+            footer { padding: 0 15px; height: 55px; }
+            .social-links a { font-size: 18px; margin-right: 15px; }
         }
     </style>
 </head>
@@ -400,14 +295,12 @@
     <div class="container">
         <header>
             <div class="logo">TOBIASZ KUBIAK | PORTFOLIO</div>
-            <button class="theme-toggle" onclick="toggleTheme()">SWITCH COLORS</button>
         </header>
 
         <div id="home-view">
             <section id="about">
                 <div class="about-text">
-                    <p style="color: var(--accent); font-weight: 700; margin-bottom: 15px; font-size: 12px;">//
-                        USER_DESCRIPTION</p>
+                    <p style="color: var(--accent); font-weight: 700; margin-bottom: 15px; font-size: 12px;">// USER_DESCRIPTION</p>
                     <h1 id="about-name">Ładowanie...</h1>
                     <p id="about-desc" style="max-width: 550px; color: var(--text-dim); font-size: 1.1rem;"></p>
                 </div>
@@ -445,7 +338,9 @@
                 renderAbout();
                 renderProjects();
                 renderFooter();
-            } catch (e) { console.error("Data.json missing."); }
+            } catch (e) { 
+                console.error("Data.json missing."); 
+            }
         }
 
         function renderAbout() {
@@ -458,14 +353,17 @@
             const grid = document.getElementById('projects-grid');
             grid.innerHTML = '';
             document.getElementById('project-count').innerText = `COUNT: 0${siteData.projects.length}`;
-            siteData.projects.forEach((p, i) => {
+            siteData.projects.forEach((p) => {
                 const card = document.createElement('div');
                 card.className = 'project-card';
+                const stackHTML = p.stack.map(s => `<span class="stack-tag">${s}</span>`).join('');
+
                 card.innerHTML = `
-                    <span style="color: var(--accent); font-weight: 700; font-size: 12px; margin-bottom: 10px; display: block;">ID_0${i + 1}</span>
-                    <img src="${p.thumbnail}" alt="${p.title}">
+                    <span class="card-date">${p.date}</span>
+                    <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
                     <h3>${p.title}</h3>
-                    <p style="color: var(--text-dim); margin-top: 10px; font-size: 0.9rem;">${p.description}</p>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 5px;">${p.description}</p>
+                    <div class="card-stack">${stackHTML}</div>
                 `;
                 card.onclick = () => showProject(p.id);
                 grid.appendChild(card);
@@ -477,43 +375,36 @@
             const detail = document.getElementById('project-detail');
             const home = document.getElementById('home-view');
 
-            // Logika wideo z automatyczną poprawką linków YouTube
             let videoHTML = "";
             if (p.video_url) {
                 let url = p.video_url;
-
-                // Jeśli to standardowy link YouTube, zamień go na embed (naprawia błąd blokowania)
                 if (url.includes('youtube.com/watch?v=')) {
                     url = url.replace('youtube.com/watch?v=', 'youtube.com/embed/');
                 } else if (url.includes('youtu.be/')) {
                     url = url.replace('youtu.be/', 'www.youtube.com/embed/');
                 }
 
-                // Sprawdzamy czy to platforma streamingowa czy plik bezpośredni
                 if (url.includes('youtube.com') || url.includes('vimeo.com')) {
-                    videoHTML = `<div class="video-wrapper"><iframe src="${url}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+                    videoHTML = `<div class="video-wrapper"><iframe src="${url}" allowfullscreen></iframe></div>`;
                 } else {
                     videoHTML = `<div class="video-wrapper"><video controls src="${url}"></video></div>`;
                 }
             }
 
             document.getElementById('detail-content').innerHTML = `
-        <div class="detail-grid">
-            <div>
-                <h1 style="font-size: clamp(2.5rem, 8vw, 4.5rem); text-transform: uppercase; line-height: 1; margin-bottom: 40px;">${p.title}</h1>
-                <div style="margin-bottom: 40px;">${p.stack.map(s => `<span class="tech-pill">${s}</span>`).join('')}</div>
-                
-                <!-- KLUCZOWA ZMIANA: white-space: pre-line naprawia wyświetlanie \n -->
-                <p style="font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px; white-space: pre-line;">${p.longDescription}</p>
-                
-                <p style="font-weight: 700;">DATE: ${p.date}</p>
-            </div>
-            <div>
-                ${videoHTML}
-                ${p.images.map(img => `<img src="${img}" style="width:100%; border: 1px solid var(--border); margin-bottom: 30px;">`).join('')}
-            </div>
-        </div>
-    `;
+                <div class="detail-grid">
+                    <div>
+                        <h1 style="font-size: clamp(2.2rem, 8vw, 4.5rem); text-transform: uppercase; line-height: 1; margin-bottom: 40px;">${p.title}</h1>
+                        <div style="margin-bottom: 40px;">${p.stack.map(s => `<span class="tech-pill">${s}</span>`).join('')}</div>
+                        <p style="font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px; white-space: pre-line;">${p.longDescription}</p>
+                        <p style="font-weight: 700; color: var(--accent);">DATE: ${p.date}</p>
+                    </div>
+                    <div>
+                        ${videoHTML}
+                        ${p.images.map(img => `<img src="${img}" style="width:100%; border: 1px solid var(--border); margin-bottom: 30px;" loading="lazy">`).join('')}
+                    </div>
+                </div>
+            `;
             home.style.display = 'none';
             detail.style.display = 'block';
             window.scrollTo(0, 0);
@@ -532,12 +423,6 @@
                 <a href="${soc.itch}" target="_blank"><i class="fab fa-itch-io"></i></a>
             `;
             document.getElementById('mailto').href = `mailto:${siteData.contact.email}`;
-        }
-
-        function toggleTheme() {
-            const body = document.body;
-            if (body.getAttribute('data-theme') === 'light') body.removeAttribute('data-theme');
-            else body.setAttribute('data-theme', 'light');
         }
 
         init();

@@ -53,6 +53,47 @@
         },
         {
             "id": 3,
+            "title": "JS Town Generator",
+            "description": "JavaScript project including ThreeJS library. Generate your beautiful city panorama!",
+            "longDescription": "Town Generator is an interactive web application designed to procedurally create unique, low-poly urban environments in real-time.\n\nBuilt with JavaScript and the Three.js library, the project explores the intersection of procedural logic and 3D rendering. With a single click, the algorithm generates a completely new city layout, ensuring that no two towns are ever the same.\n\nKey Features:\n- Procedural Generation: Every town is created from scratch with randomized building heights, placements, and color schemes.\n- Grid Scaling: Users can choose the size of the town, from a small neighborhood to a massive metropolis.\n- Dynamic Environments: Includes diverse lighting setups, such as daytime and an atmospheric night mode with glowing street lamps.\n- Performance: Optimized 3D rendering using Three.js for a smooth experience directly in the browser.\n\nTechnical Stack:\n- Framework: Three.js (WebGL-based 3D engine).\n- Language: Native JavaScript (ES6+).\n- Logic: Custom procedural algorithms for grid-based object placement.\n\nThis project demonstrates the power of browser-based 3D graphics and provides a solid foundation for procedural world-building in web games and simulations.",
+            "thumbnail": "Images/TOWNGENERATOR/3.png",
+            "images": [
+                "Images/TOWNGENERATOR/1.png",
+                "Images/TOWNGENERATOR/2.png",
+                "Images/TOWNGENERATOR/3.png",
+                "Images/TOWNGENERATOR/4.png"
+            ],
+            "date": "2024",
+            "stack": [
+                "JavaScript",
+                "Three.js",
+                "Procedural Generation",
+                "WebGL",
+                "HTML/CSS"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Shapeshifter TD",
+            "description": "Tower Defense game with randomly generated levels. Solo project.",
+            "longDescription": "Shapeshifter is a minimalist Tower Defense experience that redefines tactical planning through procedural world-building.\n\nUnlike traditional TD games with static stages, Shapeshifter challenges the player with a dynamic environment that is never the same twice. Every session utilizes a custom algorithm to generate a unique landscape, complete with randomized path placements, bonus tiles, and strategic obstacles. This ensures that the player must adapt their strategy to the terrain in every single run.\n\nKey Gameplay Pillars:\n- Procedural Map Logic: Every playthrough features a different path, bonus tile distribution, and rock placement, offering infinite replayability.\n- Deep Arsenal: Choose from 10 distinct building types, ranging from offensive turrets to strategic support structures that buff your defenses.\n- Progressive Evolution: A comprehensive upgrade system where towers gain XP by dealing damage, allowing them to evolve through multiple power tiers.\n- Challenging Wave System: Defend against 5 unique enemy classes, each requiring a different tactical approach to neutralize effectively.\n\nTechnical Insights:\n- Algorithmic Pathfinding: Implementation of a robust procedural grid-system that ensures valid and challenging paths for every new game.\n- Balanced Scaling: Real-time management of tower XP, wave difficulty, and economy (Cash system).\n- Clean UI/UX: A high-FPS, minimalist interface designed for maximum readability and distraction-free strategy.\n\nIn Shapeshifter, your greatest weapon is your ability to adapt. Can you build the ultimate defense on a battlefield that refuses to stay the same?",
+            "thumbnail": "Images/TD3D/2.png",
+            "images": [
+                "Images/TD3D/1.png",
+                "Images/TD3D/2.png",
+                "Images/TD3D/3.png"
+            ],
+            "date": "2024",
+            "stack": [
+                "Unity",
+                "C#",
+                "Procedural Generation",
+                "Tower Defense Mechanics",
+                "Game Design"
+            ]
+        },
+        {
+            "id": 7,
             "title": "JAVA Paint",
             "description": "Usage of JAVA Swing Library to create a fully functional Paint-like program.",
             "longDescription": "Paint program made in Java using the Swing library.\n\nFeatures:\n- File save and open functionality\n- Undo and redo\n- Resizing\n- Text input\n- Spray and pen tools\n- Fill, gradient, custom size, rotate\n- 6 different shapes\n- 12 slots for your favorite colors\n- Many painting combinations",
@@ -65,27 +106,6 @@
                 "JAVA",
                 "Swing",
                 "File I/O"
-            ]
-        },
-        {
-            "id": 4,
-            "title": "JS Town Generator",
-            "description": "JavaScript project including ThreeJS library. Generate your beautiful city panorama!",
-            "longDescription": "Town Generator is an interactive web application designed to procedurally create unique, low-poly urban environments in real-time.\n\nBuilt with JavaScript and the Three.js library, the project explores the intersection of procedural logic and 3D rendering. With a single click, the algorithm generates a completely new city layout, ensuring that no two towns are ever the same.\n\nKey Features:\n- Procedural Generation: Every town is created from scratch with randomized building heights, placements, and color schemes.\n- Grid Scaling: Users can choose the size of the town, from a small neighborhood to a massive metropolis.\n- Dynamic Environments: Includes diverse lighting setups, such as daytime and an atmospheric night mode with glowing street lamps.\n- Performance: Optimized 3D rendering using Three.js for a smooth experience directly in the browser.\n\nTechnical Stack:\n- Framework: Three.js (WebGL-based 3D engine).\n- Language: Native JavaScript (ES6+).\n- Logic: Custom procedural algorithms for grid-based object placement.\n\nThis project demonstrates the power of browser-based 3D graphics and provides a solid foundation for procedural world-building in web games and simulations.",
-            "thumbnail": "Images/TOWNGENERATOR/3.png",
-            "images": [
-                "Images/TOWNGENERATOR/1.png",
-                "Images/TOWNGENERATOR/2.png",
-                "Images/TOWNGENERATOR/3.png",
-                "Images/TOWNGENERATOR/4.png"
-            ],
-            "date": "2023-2024",
-            "stack": [
-                "JavaScript",
-                "Three.js",
-                "Procedural Generation",
-                "WebGL",
-                "HTML/CSS"
             ]
         },
         {
@@ -129,26 +149,6 @@
                 "Team Collaboration",
                 "Game Jam",
                 "Git"
-            ]
-        },
-        {
-            "id": 7,
-            "title": "Shapeshifter TD",
-            "description": "Tower Defense game with randomly generated levels. Solo project.",
-            "longDescription": "Shapeshifter is a minimalist Tower Defense experience that redefines tactical planning through procedural world-building.\n\nUnlike traditional TD games with static stages, Shapeshifter challenges the player with a dynamic environment that is never the same twice. Every session utilizes a custom algorithm to generate a unique landscape, complete with randomized path placements, bonus tiles, and strategic obstacles. This ensures that the player must adapt their strategy to the terrain in every single run.\n\nKey Gameplay Pillars:\n- Procedural Map Logic: Every playthrough features a different path, bonus tile distribution, and rock placement, offering infinite replayability.\n- Deep Arsenal: Choose from 10 distinct building types, ranging from offensive turrets to strategic support structures that buff your defenses.\n- Progressive Evolution: A comprehensive upgrade system where towers gain XP by dealing damage, allowing them to evolve through multiple power tiers.\n- Challenging Wave System: Defend against 5 unique enemy classes, each requiring a different tactical approach to neutralize effectively.\n\nTechnical Insights:\n- Algorithmic Pathfinding: Implementation of a robust procedural grid-system that ensures valid and challenging paths for every new game.\n- Balanced Scaling: Real-time management of tower XP, wave difficulty, and economy (Cash system).\n- Clean UI/UX: A high-FPS, minimalist interface designed for maximum readability and distraction-free strategy.\n\nIn Shapeshifter, your greatest weapon is your ability to adapt. Can you build the ultimate defense on a battlefield that refuses to stay the same?",
-            "thumbnail": "Images/TD3D/2.png",
-            "images": [
-                "Images/TD3D/1.png",
-                "Images/TD3D/2.png",
-                "Images/TD3D/3.png"
-            ],
-            "date": "2024",
-            "stack": [
-                "Unity",
-                "C#",
-                "Procedural Generation",
-                "Tower Defense Mechanics",
-                "Game Design"
             ]
         },
         {
@@ -228,7 +228,7 @@
                 "Images/PIZZA/4.png",
                 "Images/PIZZA/5.png"
             ],
-            "date": "2025",
+            "date": "2024",
             "stack": [
                 "Unity",
                 "C#",
