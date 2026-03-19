@@ -29,12 +29,8 @@
             --container-width: 1400px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Space Grotesk', sans-serif;
             background-color: var(--bg);
@@ -42,6 +38,7 @@
             line-height: 1.4;
             overflow-x: hidden;
             min-height: 100vh;
+            padding-bottom: 80px;
         }
 
         /* --- SYSTEM TŁA --- */
@@ -69,15 +66,16 @@
 
         .ambient-glow {
             position: absolute;
-            top: 30%; left: 30%;
-            width: 60vw; height: 60vw;
+            top: 20%; left: 20%;
+            width: 90vw; height: 90vw;
             background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
-            animation: glowPulse 15s ease-in-out infinite alternate;
+            animation: glowPulse 7s ease-in-out infinite alternate;
+            pointer-events: none;
         }
 
         @keyframes glowPulse {
-            from { transform: translate(-10%, -10%) scale(1); opacity: 0.5; }
-            to { transform: translate(10%, 10%) scale(1.2); opacity: 1; }
+            from { transform: translate(-15%, -15%) scale(1); opacity: 0.3; }
+            to { transform: translate(15%, 15%) scale(1.2); opacity: 0.7; }
         }
 
         /* --- KONTENER --- */
@@ -100,7 +98,6 @@
 
         .logo { font-weight: 700; font-size: 1.1rem; letter-spacing: 4px; color: var(--accent); }
 
-        /* --- SEKCJA ABOUT --- */
         #about {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -140,14 +137,11 @@
         }
 
         .about-img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
-            /* FIX: Centrowanie zdjęcia */
             object-position: top center; 
         }
 
-        /* --- SEKCJA NAGŁÓWKA PROJEKTÓW --- */
         .section-header {
             padding: 30px 40px;
             border-bottom: 2px solid var(--border);
@@ -206,11 +200,7 @@
             border: 1px solid var(--border);
         }
 
-        .project-card h3 {
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
+        .project-card h3 { font-size: 1.4rem; text-transform: uppercase; margin-bottom: 8px; }
 
         .project-card .card-date {
             font-size: 11px;
@@ -231,6 +221,26 @@
             display: inline-block;
         }
 
+        /* --- VIDEO --- */
+        .video-wrapper {
+            position: relative;
+            width: 90%;
+            margin: 0 auto 40px auto;
+            aspect-ratio: 16 / 9;
+            background: transparent;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe, .video-wrapper video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100.5%;
+            border: none;
+            display: block;
+            object-fit: cover;
+        }
+
         /* --- FOOTER --- */
         footer {
             position: fixed;
@@ -246,11 +256,26 @@
             font-weight: 900;
         }
 
-        .social-links a { color: #000; font-size: 22px; margin-right: 20px; text-decoration: none; }
-        .contact-trigger { background: #000; color: var(--accent); padding: 10px 25px; text-decoration: none; font-size: 11px; }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a { color: #000; font-size: 22px; text-decoration: none; transition: 0.2s; }
+        .social-links a:hover { transform: translateY(-3px); }
+
+        .contact-trigger {
+            background: #000;
+            color: var(--accent);
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 11px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-trigger .btn-icon { display: none; }
 
         /* --- DETALE --- */
-        #project-detail { display: none; padding: 40px 0 120px 0; animation: fadeIn 0.5s ease; }
+        #project-detail { display: none; padding: 60px 0 120px 0; animation: fadeIn 0.5s ease; }
         .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
         .back-btn { background: var(--surface); border: 1px solid var(--accent); color: var(--accent); padding: 12px 24px; cursor: pointer; margin-bottom: 40px; font-weight: 700; }
         .tech-pill { display: inline-block; border: 1px solid var(--accent); padding: 4px 12px; font-size: 10px; margin: 0 8px 8px 0; font-weight: 700; color: var(--accent); }
@@ -267,8 +292,28 @@
         @media (max-width: 900px) {
             #about { grid-template-columns: 1fr; }
             .about-text { border-right: none; padding: 60px 20px 40px 20px; border-bottom: 1px solid var(--border); }
-            .about-img-container { height: 500px; border-left: none; }
+            .about-img-container { height: 450px; border-left: none; }
             .detail-grid { grid-template-columns: 1fr; gap: 40px; }
+            .video-wrapper { width: 100%; }
+        }
+
+        @media (max-width: 700px) {
+            footer {
+                padding: 0 20px;
+                justify-content: center;
+                gap: 40px;
+            }
+            #footer-info { display: none; }
+            
+            /* Zamiana tekstu na ikonkę */
+            .contact-trigger {
+                width: 45px;
+                height: 45px;
+                padding: 0;
+                border-radius: 50%;
+            }
+            .contact-trigger .btn-text { display: none; }
+            .contact-trigger .btn-icon { display: block; font-size: 18px; }
         }
 
         @media (max-width: 600px) {
@@ -279,8 +324,6 @@
             .section-header { flex-direction: column; align-items: flex-start; padding: 20px 15px; }
             #projects-grid { grid-template-columns: 1fr; border-left: none; }
             .project-card { border-right: none; padding: 25px 15px; }
-            footer { padding: 0 15px; height: 55px; }
-            .social-links a { font-size: 18px; margin-right: 15px; }
         }
     </style>
 </head>
@@ -325,7 +368,10 @@
     <footer>
         <div id="footer-info">TOBIASZ KUBIAK | 2026</div>
         <div class="social-links" id="socials"></div>
-        <a href="#" id="mailto" class="contact-trigger">SEND_MESSAGE</a>
+        <a href="#" id="mailto" class="contact-trigger">
+            <span class="btn-text">SEND_MESSAGE</span>
+            <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+        </a>
     </footer>
 
     <script>
@@ -338,9 +384,7 @@
                 renderAbout();
                 renderProjects();
                 renderFooter();
-            } catch (e) { 
-                console.error("Data.json missing."); 
-            }
+            } catch (e) { console.error("Data.json missing."); }
         }
 
         function renderAbout() {
@@ -357,7 +401,6 @@
                 const card = document.createElement('div');
                 card.className = 'project-card';
                 const stackHTML = p.stack.map(s => `<span class="stack-tag">${s}</span>`).join('');
-
                 card.innerHTML = `
                     <span class="card-date">${p.date}</span>
                     <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
@@ -418,9 +461,9 @@
         function renderFooter() {
             const soc = siteData.contact.socials;
             document.getElementById('socials').innerHTML = `
-                <a href="${soc.linkedin}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="${soc.facebook}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="${soc.itch}" target="_blank"><i class="fab fa-itch-io"></i></a>
+                <a href="${soc.linkedin}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="${soc.facebook}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="${soc.itch}" target="_blank" title="Itch.io"><i class="fab fa-itch-io"></i></a>
             `;
             document.getElementById('mailto').href = `mailto:${siteData.contact.email}`;
         }
